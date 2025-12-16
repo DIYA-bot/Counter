@@ -1,0 +1,2 @@
+# Counter
+Used to count 
