@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Modern Counter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 h-screen flex items-center justify-center">
+
+    <div class="glass p-10 rounded-3xl text-center w-80 transition-all hover:scale-105 duration-300">
+        <h1 class="text-white text-sm font-semibold tracking-widest uppercase mb-6 opacity-80">Tally Counter</h1>
+        
+        <div id="counter" class="text-8xl font-bold text-white mb-10 select-none cursor-default transition-all duration-200">
+            0
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <button onclick="increment()" class="bg-white text-indigo-600 font-bold py-4 px-8 rounded-2xl shadow-lg hover:bg-opacity-90 active:scale-95 transition-all text-xl">
+                Tap to Add
+            </button>
+            
+            <button onclick="reset()" class="text-white text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">
+                Reset Counter
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        const counterDisplay = document.getElementById('counter');
+
+        function increment() {
+            count++;
+            updateDisplay();
+            // Simple pop animation
+            counterDisplay.classList.add('scale-110');
+            setTimeout(() => counterDisplay.classList.remove('scale-110'), 100);
+        }
+
+        function reset() {
+            count = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            counterDisplay.innerText = count;
+        }
+    </script>
+</body>
+</html>
